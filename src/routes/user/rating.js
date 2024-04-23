@@ -189,8 +189,8 @@ function parseContent(node) {
     }
 
     try {
-      const plot = nodeInnerHtml.match(/<p class(?:=""|)>\s(.*)<[\/]p>/)[1];
-      object.plot = plot.trim();
+      const plot = nodeInnerHtml?.match(/<p class(?:=""|)>\s(.*)<[\/]p>/)[1];
+      object.plot = plot?.trim();
     } catch (error) {
       object.plot = null;
     }
