@@ -29,8 +29,6 @@ export default async function getTitle(id) {
       : [];
   };
 
-  console.log(aboveTheFoldData)
-
   return {
     id: id,
     review_api_path: `/reviews/${id}`,
