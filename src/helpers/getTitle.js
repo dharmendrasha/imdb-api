@@ -46,7 +46,7 @@ export default async function getTitle(id) {
     images: props.mainColumnData.titleMainImages.edges
       .filter((e) => e.__typename === "ImageEdge")
       .map((e) => e.node.url),
-    plot: props.aboveTheFoldData?.plot?.plotText?.plainText || 'No plot found on imdb',
+    plot: props.aboveTheFoldData?.plot?.plotText?.plainText || 'N/A',
     runtime:
       props.aboveTheFoldData.runtime?.displayableProperty?.value?.plainText ??
       "",
@@ -73,23 +73,23 @@ export default async function getTitle(id) {
         country: props.mainColumnData.releaseDate?.country?.text,
         cca2: props.mainColumnData.releaseDate?.country?.id,
       },
-      originLocations: props.mainColumnData.countriesOfOrigin.countries.map(
+      originLocations: props.mainColumnData.countriesOfOrigin?.countries?.map(
         (e) => ({
           country: e.text,
           cca2: e.id,
         })
-      ),
+      ) || [],
     },
-    year: props.aboveTheFoldData.releaseDate.year,
-    spokenLanguages: props.mainColumnData.spokenLanguages.spokenLanguages.map(
+    year: props.aboveTheFoldData.releaseDate?.year || 1970,
+    spokenLanguages: props.mainColumnData?.spokenLanguages?.spokenLanguages?.map(
       (e) => ({
         language: e.text,
         id: e.id,
       })
-    ),
-    filmingLocations: props.mainColumnData.filmingLocations.edges.map(
+    ) || [],
+    filmingLocations: props.mainColumnData?.filmingLocations?.edges?.map(
       (e) => e.node.text
-    ),
+    ) || [],
     actors: getCredits("cast"),
     actors_v2: getCredits("cast", "2"),
     creators: getCredits("creator"),
