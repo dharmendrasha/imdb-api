@@ -11,7 +11,7 @@
     "start": "wrangler dev src/index.js --port 3000",
     "bump": "node scripts/bump-version.js"
   },
-  "author": "tuhinpal <me@thetuhin.com>",
+  "author": "dharmendra soni<dharmendrashaeagle@elitale.com>",
   "license": "Apache-2.0",
   "devDependencies": {
     "axios": "^0.27.2",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tuhinpal/imdb-api.git"
+    "url": "git+https://github.com/dharmendrasha/imdb-api.git"
   },
   "keywords": [
     "imdb",
@@ -39,7 +39,7 @@
     "cloudflare-workers"
   ],
   "bugs": {
-    "url": "https://github.com/tuhinpal/imdb-api/issues"
+    "url": "https://github.com/dharmendrasha/imdb-api/issues"
   },
-  "homepage": "https://github.com/tuhinpal/imdb-api#readme"
+  "homepage": "https://github.com/dharmendrasha/imdb-api#readme"
 }

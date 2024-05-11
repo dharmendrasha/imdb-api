@@ -12,6 +12,7 @@ title.get("/:id", async (c) => {
 
     return c.json(result);
   } catch (error) {
+    console.error(error)
     c.status(500);
     return c.json({
       message: error.message,

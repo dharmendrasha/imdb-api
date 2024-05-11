@@ -42,10 +42,10 @@ export default async function getTitle(id) {
       props.aboveTheFoldData.productionStatus.currentProductionStage.id ===
       "released",
     title: props.aboveTheFoldData.titleText.text,
-    image: props.aboveTheFoldData.primaryImage.url,
+    image: props.aboveTheFoldData.primaryImage?.url || 'https://placehold.co/400x600',
     images: props.mainColumnData.titleMainImages.edges
       .filter((e) => e.__typename === "ImageEdge")
-      .map((e) => e.node.url),
+      .map((e) => e.node?.url || 'https://placehold.co/600x400'),
     plot: props.aboveTheFoldData?.plot?.plotText?.plainText || 'N/A',
     runtime:
       props.aboveTheFoldData.runtime?.displayableProperty?.value?.plainText ??
@@ -62,13 +62,13 @@ export default async function getTitle(id) {
     genre: props.aboveTheFoldData.genres.genres.map((e) => e.id),
     releaseDetailed: {
       date: new Date(
-        props.aboveTheFoldData.releaseDate.year,
-        props.aboveTheFoldData.releaseDate.month - 1,
-        props.aboveTheFoldData.releaseDate.day
+        props.aboveTheFoldData.releaseDate?.year || 1970,
+        (props.aboveTheFoldData.releaseDate?.month || 1) - 1,
+        props.aboveTheFoldData.releaseDate?.day || 1
       ).toISOString(),
-      day: props.aboveTheFoldData.releaseDate.day,
-      month: props.aboveTheFoldData.releaseDate.month,
-      year: props.aboveTheFoldData.releaseDate.year,
+      day: props.aboveTheFoldData.releaseDate?.day || 1,
+      month: props.aboveTheFoldData.releaseDate?.month || 1, 
+      year: props.aboveTheFoldData.releaseDate?.year || 1970,
       releaseLocation: {
         country: props.mainColumnData.releaseDate?.country?.text,
         cca2: props.mainColumnData.releaseDate?.country?.id,
