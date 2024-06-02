@@ -11,7 +11,7 @@
     "start": "wrangler dev src/index.js --port 3000",
     "bump": "node scripts/bump-version.js"
   },
-  "author": "dharmendra soni<dharmendrashaeagle@elitale.com>",
+  "author": "dharmendra soni<dharmendrashaeagle@gmail.com>",
   "license": "Apache-2.0",
   "devDependencies": {
     "axios": "^0.27.2",

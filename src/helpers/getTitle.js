@@ -2,6 +2,9 @@ import apiRequestRawHtml from "./apiRequestRawHtml";
 import DomParser from "dom-parser";
 import seriesFetcher from "./seriesFetcher";
 
+const DEF_480p = 'DEF_480p'
+const DEF_SD = 'DEF_SD'
+
 export default async function getTitle(id) {
   const parser = new DomParser();
   const html = await apiRequestRawHtml(`https://www.imdb.com/title/${id}`);
@@ -29,8 +32,18 @@ export default async function getTitle(id) {
       : [];
   };
 
+  const getTrailers = () => {
+    const allVideos = (props.aboveTheFoldData.primaryVideos?.edges || []).map(v => v.node.playbackURLs).flat()
+    const highDef = allVideos.filter((v) => v.videoDefinition === DEF_480p)
+    const lowDef = allVideos.filter((v) => v.videoDefinition === DEF_SD)
+    const getVideo = highDef.length > 0 ? highDef : lowDef
+    return getVideo
+  }
+
   return {
     id: id,
+    trailer: getTrailers().at(0),
+    trailers: getTrailers(),
     review_api_path: `/reviews/${id}`,
     imdb: `https://www.imdb.com/title/${id}`,
     contentType: props.aboveTheFoldData.titleType.id,
