@@ -64,3 +64,6 @@ After deployed, map the worker to a Domain Name to configure cache. Only Workers
 - Made by [Tuhin Kanti Pal](https://github.com/tuhinpal)
 
 ### Have a good day 🤘
+
+
+<!-- Security scan triggered at 2025-09-01 23:09:11 -->
